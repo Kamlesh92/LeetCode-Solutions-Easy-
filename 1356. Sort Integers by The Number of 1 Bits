@@ -1,0 +1,20 @@
+You are given an integer array arr. Sort the integers in the array in ascending order by the number of 1's in their binary representation and in case of two or more integers have the same number of 1's you have to sort them in ascending order.
+
+Return the array after sorting it.
+
+ #Solution[python3]
+#code
+
+class Solution:
+    def sortByBits(self, arr: List[int]) -> List[int]:
+        # Define a custom comparison key function for sorting
+        def custom_sort_key(num):
+            # Calculate the number of set bits (1s) in the binary representation of num
+            bit_count = bin(num).count('1')
+            return (bit_count, num)
+
+        # Sort the input list using the custom comparison key function
+        arr.sort(key=custom_sort_key)
+
+        # Return the sorted list
+        return arr
